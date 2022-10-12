@@ -638,8 +638,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 298492922}
+  - component: {fileID: 298492923}
   m_Layer: 0
-  m_Name: TankTurretParrent
+  m_Name: TankTurretParent
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -661,6 +662,18 @@ Transform:
   m_Father: {fileID: 818264547}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298492923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298492921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9e7e0be8de74948975bf6ffcb43baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &378663455
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,7 +5813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -2.85, y: -9.79, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5817,6 +5830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 581462062}
   - component: {fileID: 581462063}
+  - component: {fileID: 581462064}
   m_Layer: 0
   m_Name: TankBase
   m_TagString: Untagged
@@ -5891,6 +5905,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &581462064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581462061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fde4cbd2069cd343abb35ff9fe6d67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 70
+  _rotationSpeed: 200
 --- !u!1 &666786125
 GameObject:
   m_ObjectHideFlags: 0
@@ -6334,10 +6362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f49e90617472174cb96e713e4132bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 70
-  _rotationSpeed: 200
   _turretRotationSpeed: 150
   _turretParent: {fileID: 298492922}
+  tankMover: {fileID: 0}
 --- !u!1 &1083789911
 GameObject:
   m_ObjectHideFlags: 0
@@ -6922,7 +6949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257143239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.191906, y: 0.6253231, z: -0.73368347}
+  m_LocalPosition: {x: -7.47, y: -10.58, z: -0.73368347}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17004,6 +17031,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2113083995}
   - component: {fileID: 2113083996}
+  - component: {fileID: 2113083997}
+  - component: {fileID: 2113083998}
   m_Layer: 0
   m_Name: TankTurret
   m_TagString: Untagged
@@ -17078,3 +17107,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2113083997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113083994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe4cff11dcf52f4f88bc3d9f9bdb738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2113083998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113083994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe4cff11dcf52f4f88bc3d9f9bdb738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

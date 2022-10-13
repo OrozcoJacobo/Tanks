@@ -6,6 +6,7 @@ public class TankController : MonoBehaviour
 
     public AimTurret aimTurret;
     public TankMover tankMover;
+    public Turret[] turrets;
 
     private void Awake()
     {
@@ -13,11 +14,18 @@ public class TankController : MonoBehaviour
             tankMover = GetComponentInChildren<TankMover>();
         if (aimTurret == null)
             aimTurret = GetComponentInChildren<AimTurret>();
+        if(turrets == null || turrets.Length == 0)
+        {
+            turrets = GetComponentsInChildren<Turret>();
+        }
     }
 
     public void HandleShoot()
     {
-
+        foreach(var turret in turrets)
+        {
+            turret.Shoot(); 
+        }
     }
 
     public void HandleMoveBody(Vector2 movementVector)

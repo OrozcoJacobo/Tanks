@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//The turret script is actually responsible for creating and shooting the bullet in the direction that the turret is facing 
 public class Turret : MonoBehaviour
 {
     [SerializeField] private List<Transform> _turretBarrels;

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 10;
-    [SerializeField] private float _damage = 5;
+    [SerializeField] private int _damage = 5;
     [SerializeField] private float _maxDistance = 10;
 
     private Vector2 _startPosition;
@@ -38,7 +38,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collided" + other.name);
+        Debug.Log("Collider" + other.name);
+
+        var damagable = other.GetComponent<Damagable>();
+        if(damagable != null)
+        {
+            damagable.Hit(_damage);
+        }
+
         DisableObject();
     }
 }

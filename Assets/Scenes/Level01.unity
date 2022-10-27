@@ -6186,22 +6186,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -73.625}
---- !u!4 &818264547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-  m_PrefabInstance: {fileID: 2658138793691638689}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &818264550 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2658138794492514887, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-  m_PrefabInstance: {fileID: 2658138793691638689}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f49e90617472174cb96e713e4132bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1083789911
 GameObject:
   m_ObjectHideFlags: 0
@@ -6736,7 +6720,7 @@ MonoBehaviour:
   OnShoot:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 818264550}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TankController, Assembly-CSharp
         m_MethodName: HandleShoot
         m_Mode: 1
@@ -6751,7 +6735,7 @@ MonoBehaviour:
   OnMoveBody:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 818264550}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TankController, Assembly-CSharp
         m_MethodName: HandleMoveBody
         m_Mode: 0
@@ -6766,7 +6750,7 @@ MonoBehaviour:
   OnMoveTurret:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 818264550}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TankController, Assembly-CSharp
         m_MethodName: HandleTurretMovement
         m_Mode: 0
@@ -6789,8 +6773,7 @@ Transform:
   m_LocalPosition: {x: -7.47, y: -10.58, z: -0.73368347}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 818264547}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16858,60 +16841,3 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &2658138793691638689
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1257143241}
-    m_Modifications:
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514882, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658138794492514883, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}
-      propertyPath: m_Name
-      value: Tank
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 14fafd0ec46500a43944eacc9a1b060c, type: 3}

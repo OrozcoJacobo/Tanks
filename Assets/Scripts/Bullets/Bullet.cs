@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 10;
     [SerializeField] private int _damage = 5;
-    [SerializeField] private float _maxDistance = 10;
+    [SerializeField] private float _maxDistance = 50;
 
     private Vector2 _startPosition;
     private float _conquaredDistance = 0;

@@ -15,8 +15,8 @@ TagManager:
   - Agent
   - Hitable
   - ObstaclesMovement
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 

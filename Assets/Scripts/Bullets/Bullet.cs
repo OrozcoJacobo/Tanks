@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     private float _conquaredDistance = 0;
     private Rigidbody2D _rb;
 
+    private BulletData _bulletData;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -30,10 +32,11 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);    
     }
 
-    public void Initialize()
+    public void Initialize(BulletData bulletData)
     {
+        _bulletData = bulletData;
         _startPosition = transform.position;
-        _rb.velocity = transform.up * _speed;
+        _rb.velocity = transform.up * _bulletData.speed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

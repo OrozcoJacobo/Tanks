@@ -256,12 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fde4cbd2069cd343abb35ff9fe6d67a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 70
-  _rotationSpeed: 100
-  _acceleration: 70
-  _deacceleration: 50
-  _currentSpeed: 0
-  _currentForwardDirection: 1
+  movementData: {fileID: 0}
 --- !u!1 &4681249013518398981
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,11 +358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turretBarrels:
   - {fileID: 4681249012521727552}
-  _bulletPrefab: {fileID: 8815361935420156504, guid: 382377c73d2591841a14f607460b5116, type: 3}
-  _reloadDelay: 1
   _currentDelay: 0
   _canShoot: 1
   _bulletPoolCount: 10
+  turretData: {fileID: 11400000, guid: 3f9c19a9b7d3c9342a3cef65355fbdc7, type: 2}
 --- !u!114 &4681249013518398982
 MonoBehaviour:
   m_ObjectHideFlags: 0

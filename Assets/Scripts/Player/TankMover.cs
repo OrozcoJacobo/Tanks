@@ -5,12 +5,10 @@ public class TankMover : MonoBehaviour
 {
     private Rigidbody2D _rb;
 
-    [SerializeField] private float _maxSpeed = 10f;
-    [SerializeField] private float _rotationSpeed = 100f;
-    [SerializeField] private float _acceleration = 70.0f;
-    [SerializeField] private float _deacceleration = 0;
-    [SerializeField] private float _currentSpeed = 0f;
-    [SerializeField] private float _currentForwardDirection = 1f;
+    public TankMovementData movementData;
+
+    private float _currentSpeed = 0f;
+    private float _currentForwardDirection = 1f;
 
     private Vector2 _movementVector;
 
@@ -21,7 +19,7 @@ public class TankMover : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.velocity = (Vector2)transform.up * _currentSpeed * _currentForwardDirection * Time.deltaTime;
-        _rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -_movementVector.x * _rotationSpeed * Time.deltaTime));
+        _rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, -_movementVector.x * movementData.rotationSpeed * Time.deltaTime));
     }
 
     public void Move(Vector2 movementVector)
@@ -38,12 +36,12 @@ public class TankMover : MonoBehaviour
     {
         if(Mathf.Abs(movementVector.y) > 0)
         {
-            _currentSpeed += _acceleration * Time.deltaTime;
+            _currentSpeed += movementData.acceleration * Time.deltaTime;
         }
         else
         {
-            _currentSpeed -= _deacceleration * Time.deltaTime;
+            _currentSpeed -= movementData.deacceleration * Time.deltaTime;
         }
-        _currentSpeed = Mathf.Clamp(_currentSpeed, 0, _maxSpeed);
+        _currentSpeed = Mathf.Clamp(_currentSpeed, 0, movementData.maxSpeed);
     }
 }

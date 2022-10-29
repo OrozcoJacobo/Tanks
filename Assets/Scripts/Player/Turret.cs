@@ -7,17 +7,17 @@ public class Turret : MonoBehaviour
 {
     [SerializeField] private List<Transform> _turretBarrels;
 
-    [SerializeField] private GameObject _bulletPrefab;
-
-    [SerializeField] private float _reloadDelay = 1;
     [SerializeField] private float _currentDelay = 0;
 
     [SerializeField] private bool _canShoot = true;
 
+    [SerializeField] private int _bulletPoolCount = 10;
+
+    public TurretData turretData;
+
     private Collider2D[] _tankColliders;
 
     private ObjectPool _bulletPool;
-    [SerializeField] private int _bulletPoolCount = 10;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        _bulletPool.Initialize(_bulletPrefab, _bulletPoolCount);
+        _bulletPool.Initialize(turretData.bulletPrefab, _bulletPoolCount);
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class Turret : MonoBehaviour
         if(_canShoot)
         {
             _canShoot = false;
-            _currentDelay = _reloadDelay;
+            _currentDelay = turretData.reloadDelay;
 
             foreach(var barrel in _turretBarrels)
             {
@@ -54,7 +54,7 @@ public class Turret : MonoBehaviour
                 GameObject bullet = _bulletPool.CreateObject();
                 bullet.transform.position = barrel.position;
                 bullet.transform.localRotation = barrel.rotation;
-                bullet.GetComponent<Bullet>().Initialize();
+                bullet.GetComponent<Bullet>().Initialize(turretData.bulletData);
                 foreach(var collider in _tankColliders)
                 {
                     Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), collider);

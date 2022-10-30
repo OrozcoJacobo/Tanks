@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(ObjectPool))]
 //The turret script is actually responsible for creating and shooting the bullet in the direction that the turret is facing 
@@ -19,6 +20,9 @@ public class Turret : MonoBehaviour
 
     private ObjectPool _bulletPool;
 
+    [SerializeField] private UnityEvent _OnShoot, _OnReload, _OnCantShoot;
+    [SerializeField] private UnityEvent<float> _OnReloading; 
+
     private void Awake()
     {
         _tankColliders = GetComponentsInParent<Collider2D>();
@@ -28,6 +32,7 @@ public class Turret : MonoBehaviour
     private void Start()
     {
         _bulletPool.Initialize(turretData.bulletPrefab, _bulletPoolCount);
+        _OnReloading?.Invoke(_currentDelay);
     }
 
     private void Update()
@@ -35,7 +40,8 @@ public class Turret : MonoBehaviour
         if(_canShoot == false)
         {
             _currentDelay -= Time.deltaTime;
-            if(_currentDelay <= 0)
+            _OnReloading?.Invoke(_currentDelay);
+            if (_currentDelay <= 0)
             {
                 _canShoot = true;
             }
@@ -60,6 +66,13 @@ public class Turret : MonoBehaviour
                     Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), collider);
                 }
             }
+
+            _OnShoot?.Invoke();
+            _OnReloading?.Invoke(_currentDelay);
+        }
+        else
+        {
+            _OnCantShoot?.Invoke();
         }
     }
 }

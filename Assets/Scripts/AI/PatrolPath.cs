@@ -47,9 +47,9 @@ public class PatrolPath : MonoBehaviour
     {
         if (patrolPoints.Count == 0)
             return;
-        for(int i = patrolPoints.Count -1; i > 0; i--)
+        for(int i = patrolPoints.Count -1; i >= 0; i--)
         {
-            if (patrolPoints[i] == null)
+            if (i == -1 || patrolPoints[i] == null)
                 return;
             Gizmos.color = pointsColor;
             Gizmos.DrawSphere(patrolPoints[i].position, pointSize);

@@ -84,6 +84,7 @@ public class AIDetector : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _viewRadius);
     }
 }

@@ -29,7 +29,7 @@ public class TankMover : MonoBehaviour
         if (movementVector.y > 0)
             _currentForwardDirection = 1;
         else if(movementVector.y < 0)
-            _currentForwardDirection = 0;
+            _currentForwardDirection = -1;
     }
 
     private void CalculateSpeed(Vector2 movementVector)

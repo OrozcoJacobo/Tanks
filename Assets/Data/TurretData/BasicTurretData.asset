@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f2f6c8227e21544bdfe51024edc7cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 51667462e8230ed4dba41481b6545889, type: 3}
   m_Name: BasicTurretData
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8815361935420156504, guid: 382377c73d2591841a14f607460b5116, type: 3}
+  bulletPrefab: {fileID: 5149417576530530994, guid: 4bb7991dcac39784eaa7aaf916dbb7f2, type: 3}
   reloadDelay: 1
-  bulletData: {fileID: 11400000, guid: ad8ee2bea20f96b4dae7f8f415eb666a, type: 2}
+  bulletData: {fileID: 11400000, guid: e453e59cc083dd44f8824d5bda3c2dbc, type: 2}

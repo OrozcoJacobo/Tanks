@@ -1,12 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyIfDisabled : MonoBehaviour
 {
-    public bool selfDestructionEnabled { get; set; } = false;
+    public bool SelfDestructionEnabled { get; set; } = false;
 
-    public void OnDisable()
+    private void OnDisable()
     {
-        if(selfDestructionEnabled)
+        if (SelfDestructionEnabled)
         {
             Destroy(gameObject);
         }

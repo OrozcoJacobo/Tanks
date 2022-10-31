@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class DefaultEnemyAI : MonoBehaviour
 {
-    [SerializeField]private AIBehaviour shootBehaviour, patrolBehavoiur;
+    [SerializeField]
+    private AIBehaviour shootBehaviour, patrolBehaviour;
 
-    [SerializeField] private TankController _tank;
-    [SerializeField] private AIDetector _detector;
+    [SerializeField]
+    private TankController tank;
+    [SerializeField]
+    private AIDetector detector;
+
+    private void Awake()
+    {
+        detector = GetComponentInChildren<AIDetector>();
+        tank = GetComponentInChildren<TankController>();
+    }
 
     private void Update()
     {
-        if(_detector.TargetVisible)
+        if (detector.TargetVisible)
         {
-            shootBehaviour.PerformAction(_tank, _detector);
+            shootBehaviour.PerformAction(tank, detector);
         }
         else
         {
-            patrolBehavoiur.PerformAction(_tank, _detector);
+            patrolBehaviour.PerformAction(tank, detector);
         }
     }
 }

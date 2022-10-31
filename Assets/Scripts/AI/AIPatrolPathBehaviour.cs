@@ -4,39 +4,40 @@ using UnityEngine;
 
 public class AIPatrolPathBehaviour : AIBehaviour
 {
-    [SerializeField] private PatrolPath _patrolPath;
+    public PatrolPath patrolPath;
     [Range(0.1f, 1)]
-    [SerializeField] private float _arriveDistance = 1;
-    [SerializeField] private float _waitTime = 0.5f;
-    [SerializeField] private bool _isWaiting = false;
-    [SerializeField] Vector2 currentPatrolTarget = Vector2.zero;
-    
+    public float arriveDistance = 1;
+    public float waitTime = 0.5f;
+    [SerializeField]
+    private bool isWaiting = false;
+    [SerializeField]
+    Vector2 currentPatrolTarget = Vector2.zero;
     bool isInitialized = false;
 
-    private int _currentIndex = -1;
+    private int currentIndex = -1;
 
     private void Awake()
     {
-        if (_patrolPath == null)
-            _patrolPath = GetComponentInChildren<PatrolPath>();
+        if (patrolPath == null)
+            patrolPath = GetComponentInChildren<PatrolPath>();
     }
 
     public override void PerformAction(TankController tank, AIDetector detector)
     {
-        if (!_isWaiting)
+        if (!isWaiting)
         {
-            if (_patrolPath.Length < 2)
+            if (patrolPath.Length < 2)
                 return;
             if (!isInitialized)
             {
-                var currentPathPoint = _patrolPath.GetClosestPathPoint(tank.transform.position);
-                this._currentIndex = currentPathPoint.Index;
+                var currentPathPoint = patrolPath.GetClosestPathPoint(tank.transform.position);
+                this.currentIndex = currentPathPoint.Index;
                 this.currentPatrolTarget = currentPathPoint.Position;
                 isInitialized = true;
             }
-            if (Vector2.Distance(tank.transform.position, currentPatrolTarget) < _arriveDistance)
+            if (Vector2.Distance(tank.transform.position, currentPatrolTarget) < arriveDistance)
             {
-                _isWaiting = true;
+                isWaiting = true;
                 StartCoroutine(WaitCoroutine());
                 return;
             }
@@ -58,11 +59,11 @@ public class AIPatrolPathBehaviour : AIBehaviour
 
         IEnumerator WaitCoroutine()
         {
-            yield return new WaitForSeconds(_waitTime);
-            var nextPathPoint = _patrolPath.GetNextPathPoint(_currentIndex);
+            yield return new WaitForSeconds(waitTime);
+            var nextPathPoint = patrolPath.GetNextPathPoint(currentIndex);
             currentPatrolTarget = nextPathPoint.Position;
-            _currentIndex = nextPathPoint.Index;
-            _isWaiting = false;
+            currentIndex = nextPathPoint.Index;
+            isWaiting = false;
         }
     }
 }

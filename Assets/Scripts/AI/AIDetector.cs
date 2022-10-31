@@ -1,15 +1,20 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AIDetector : MonoBehaviour
 {
     [Range(1, 15)]
-    [SerializeField] private float _viewRadius = 11;
-    [SerializeField] private float _detectionCheckDelay = 0.1f;
-    [SerializeField] private LayerMask _playerLayerMask;
-    [SerializeField] private LayerMask _visibilityLayer;
-
-    [SerializeField] private Transform target = null;
+    [SerializeField]
+    private float viewRadius = 11;
+    [SerializeField]
+    private float detectionCheckDelay = 0.1f;
+    [SerializeField]
+    private Transform target = null;
+    [SerializeField]
+    private LayerMask playerLayerMask;
+    [SerializeField]
+    private LayerMask visibilityLayer;
 
     [field: SerializeField]
     public bool TargetVisible { get; private set; }
@@ -25,42 +30,36 @@ public class AIDetector : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DetectionCoroutine());   
+        StartCoroutine(DetectionCoroutine());
     }
 
     private void Update()
     {
-        if(Target != null)
-        {
+        if (Target != null)
             TargetVisible = CheckTargetVisible();
-        }
     }
 
     private bool CheckTargetVisible()
     {
-        var result = Physics2D.Raycast(transform.position, Target.position - transform.position, _viewRadius, _visibilityLayer);
-        if(result.collider != null)
+        var result = Physics2D.Raycast(transform.position, Target.position - transform.position, viewRadius, visibilityLayer);
+        if (result.collider != null)
         {
-            return (_playerLayerMask & (1 << result.collider.gameObject.layer)) != 0;
+            return (playerLayerMask & (1 << result.collider.gameObject.layer)) != 0;
         }
         return false;
     }
 
     private void DetectTarget()
     {
-        if(Target == null)
-        {
+        if (Target == null)
             CheckIfPlayerInRange();
-        }
         else if (Target != null)
-        {
             DetectIfOutOfRange();
-        }
     }
 
     private void DetectIfOutOfRange()
     {
-        if(Target == null || Target.gameObject.activeSelf == false || Vector2.Distance(transform.position, Target.position) > _viewRadius)
+        if (Target == null || Target.gameObject.activeSelf == false || Vector2.Distance(transform.position, Target.position) > viewRadius + 1)
         {
             Target = null;
         }
@@ -68,8 +67,8 @@ public class AIDetector : MonoBehaviour
 
     private void CheckIfPlayerInRange()
     {
-        Collider2D collision = Physics2D.OverlapCircle(transform.position, _viewRadius, _playerLayerMask);
-        if(collision != null)
+        Collider2D collision = Physics2D.OverlapCircle(transform.position, viewRadius, playerLayerMask);
+        if (collision != null)
         {
             Target = collision.transform;
         }
@@ -77,14 +76,15 @@ public class AIDetector : MonoBehaviour
 
     IEnumerator DetectionCoroutine()
     {
-        yield return new WaitForSeconds(_detectionCheckDelay);
+        yield return new WaitForSeconds(detectionCheckDelay);
         DetectTarget();
-        StartCoroutine(DetectionCoroutine());   
+        StartCoroutine(DetectionCoroutine());
+
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, _viewRadius);
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 }

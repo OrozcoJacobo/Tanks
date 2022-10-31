@@ -13,7 +13,6 @@ public class PatrolPath : MonoBehaviour
     public float pointSize = 0.3f;
     public Color lineColor = Color.magenta;
 
-
     public struct PathPoint
     {
         public int Index;
@@ -24,10 +23,10 @@ public class PatrolPath : MonoBehaviour
     {
         var minDistance = float.MaxValue;
         var index = -1;
-        for(int i = 0; i < patrolPoints.Count; i++)
+        for (int i = 0; i < patrolPoints.Count; i++)
         {
             var tempDistance = Vector2.Distance(tankPosition, patrolPoints[i].position);
-            if(tempDistance < minDistance)
+            if (tempDistance < minDistance)
             {
                 minDistance = tempDistance;
                 index = i;
@@ -39,27 +38,30 @@ public class PatrolPath : MonoBehaviour
 
     public PathPoint GetNextPathPoint(int index)
     {
-        var newIndex = index + 1 >= patrolPoints.Count ? 0: index + 1;
+        var newIndex = index + 1 >= patrolPoints.Count ? 0 : index + 1;
         return new PathPoint { Index = newIndex, Position = patrolPoints[newIndex].position };
     }
+
 
     private void OnDrawGizmos()
     {
         if (patrolPoints.Count == 0)
             return;
-        for(int i = patrolPoints.Count -1; i >= 0; i--)
+        for (int i = patrolPoints.Count - 1; i >= 0; i--)
         {
             if (i == -1 || patrolPoints[i] == null)
                 return;
+
             Gizmos.color = pointsColor;
             Gizmos.DrawSphere(patrolPoints[i].position, pointSize);
 
             if (patrolPoints.Count == 1 || i == 0)
                 return;
+
             Gizmos.color = lineColor;
             Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[i - 1].position);
 
-            if(patrolPoints.Count > 2 && i == patrolPoints.Count - 1)
+            if (patrolPoints.Count > 2 && i == patrolPoints.Count - 1)
             {
                 Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[0].position);
             }

@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Bullet
   - Agent
-  - Hitable
+  - Hittable
   - ObstaclesMovement
   - Player
   - Enemy
@@ -42,32 +42,32 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Ground
-    uniqueID: 454309551
+    uniqueID: 3286568179
     locked: 0
   - name: DetailsBottom
-    uniqueID: 4268844735
+    uniqueID: 2760931655
     locked: 0
   - name: Obstacles
-    uniqueID: 1518098437
+    uniqueID: 975947165
     locked: 0
   - name: Enemies
-    uniqueID: 1012360965
+    uniqueID: 2823942235
     locked: 0
   - name: Player
-    uniqueID: 2748790355
+    uniqueID: 297575681
     locked: 0
-  - name: Item
-    uniqueID: 3398226207
+  - name: Items
+    uniqueID: 784727535
     locked: 0
   - name: Bullets
-    uniqueID: 3411351771
+    uniqueID: 1180159871
     locked: 0
   - name: SpecialEffects
-    uniqueID: 3475646133
+    uniqueID: 1476806939
     locked: 0
   - name: DetailsTop
-    uniqueID: 1323078373
+    uniqueID: 973470441
     locked: 0
   - name: UI
-    uniqueID: 2451164203
+    uniqueID: 1337076293
     locked: 0
